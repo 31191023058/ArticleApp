@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 public class ViewArticleActivity extends AppCompatActivity {
     ImageView imv_photoview;
     TextView tv_titleview, tv_descview;
@@ -25,8 +27,8 @@ public class ViewArticleActivity extends AppCompatActivity {
         tv_titleview = findViewById(R.id.tv_titleview);
         tv_descview = findViewById(R.id.tv_descview);
 
-        Picasso.get().load(ArticleData.getPhotoFromId(id).getArticle_image()).resize(700, 700).centerCrop().into(imv_photoview);
-        tv_titleview.setText(ArticleData.getPhotoFromId(id).getArticle_title());
-        tv_descview.setText(ArticleData.getPhotoFromId(id).getArticle_description());
+        Picasso.get().load(Objects.requireNonNull(ArticleData.getPhotoFromId(id)).getArticle_image()).resize(700, 700).centerCrop().into(imv_photoview);
+        tv_titleview.setText(Objects.requireNonNull(ArticleData.getPhotoFromId(id)).getArticle_title());
+        tv_descview.setText(Objects.requireNonNull(ArticleData.getPhotoFromId(id)).getArticle_description());
     }
 }

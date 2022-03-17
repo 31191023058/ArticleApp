@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     public GridView gridView;
-    private AdapterView.OnItemClickListener onClick = new AdapterView.OnItemClickListener() {
+    private final AdapterView.OnItemClickListener onClick = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getBaseContext(), ViewArticleActivity.class);
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gridView = findViewById(R.id.gridview);
-        ArticleData articleData = new ArticleData(getBaseContext(), gridView);
+        new ArticleData(getBaseContext(), gridView);
         gridView.setOnItemClickListener(onClick);
     }
 }

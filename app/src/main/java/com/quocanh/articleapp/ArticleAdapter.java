@@ -1,5 +1,6 @@
 package com.quocanh.articleapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ArticleAdapter extends BaseAdapter {
-    private ArrayList<Article> article_list;
-    private Context context;
+    private final ArrayList<Article> article_list;
+    private final Context context;
 
     public ArticleAdapter(ArrayList<Article> article_list, Context context) {
         this.article_list = article_list;
@@ -36,6 +37,7 @@ public class ArticleAdapter extends BaseAdapter {
         return article_list.get(i).getArticle_id();
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         MyView dataitem;
