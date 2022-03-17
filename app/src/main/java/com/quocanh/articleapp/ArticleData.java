@@ -1,5 +1,6 @@
 package com.quocanh.articleapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.widget.GridView;
@@ -15,7 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ArticleData {
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
+    @SuppressLint("StaticFieldLeak")
     private static GridView gridView;
     public static ArrayList<Article> data = new ArrayList<>();
     static final private String URL = "https://articleapp-35be2-default-rtdb.asia-southeast1.firebasedatabase.app/";
@@ -24,7 +27,6 @@ public class ArticleData {
         ArticleData.context = context;
         ArticleData.gridView = gridView;
         getDataFromDB();
-
     }
 
     public static Article getPhotoFromId(int id) {
@@ -52,7 +54,7 @@ public class ArticleData {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("tag", error.toException());
+                Log.w(MainActivity.class.getSimpleName(), "Error: " + error.toException());
             }
         });
     }
