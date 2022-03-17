@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "774954482507",
+    "firebase_url": "https://articleapp-35be2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "articleapp-35be2",
+    "storage_bucket": "articleapp-35be2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774954482507:android:798e7e63a7c85803f5c6ce",
+        "android_client_info": {
+          "package_name": "com.quocanh.articleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774954482507-kgfmv2tgdgo1bib68ovgpg9kd972ao8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyIPgZw6Snot9kmxLNFS6CpRf-pekil2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774954482507-kgfmv2tgdgo1bib68ovgpg9kd972ao8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
