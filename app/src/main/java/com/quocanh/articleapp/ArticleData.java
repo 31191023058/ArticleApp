@@ -22,7 +22,7 @@ public class ArticleData {
     private static GridView gridView;
 
     public static ArticleList articleList;
-    public static ArrayList<Article> data = new ArrayList<>();
+    public static ArrayList<Article> data;
 
     public ArticleData(Context context, GridView gridView) {
         ArticleData.context = context;
@@ -36,6 +36,7 @@ public class ArticleData {
                 return articleList.getArticles().get(i);
             }
         }
+        articleList.getArticles().clear();
         return null;
     }
 
@@ -47,11 +48,11 @@ public class ArticleData {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                data = new ArrayList<>();
                 for (DataSnapshot dataSnap : snapshot.getChildren()) {
                     Article article = dataSnap.getValue(Article.class);
                     data.add(article);
                 }
-                articleList = new ArticleList(data);
                 displayData();
             }
 
@@ -62,6 +63,7 @@ public class ArticleData {
         });
     }
     public static void displayData() {
+        articleList = new ArticleList(data);
         ArticleAdapter adapter = new ArticleAdapter(articleList.getArticles(), context);
         gridView.setAdapter(adapter);
     }
