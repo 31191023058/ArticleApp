@@ -20,8 +20,9 @@ public class ArticleData {
     private static Context context;
     @SuppressLint("StaticFieldLeak")
     private static GridView gridView;
+
+    public static ArticleList articleList;
     public static ArrayList<Article> data = new ArrayList<>();
-    static final private String URL = "https://articleapp-35be2-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
     public ArticleData(Context context, GridView gridView) {
         ArticleData.context = context;
@@ -30,15 +31,16 @@ public class ArticleData {
     }
 
     public static Article getPhotoFromId(int id) {
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).getArticle_id() == id) {
-                return data.get(i);
+        for (int i = 0; i < articleList.getArticles().size(); i++) {
+            if (articleList.getArticles().get(i).getArticle_id() == id) {
+                return articleList.getArticles().get(i);
             }
         }
         return null;
     }
 
     public static void getDataFromDB() {
+        String URL = "https://articleapp-35be2-default-rtdb.asia-southeast1.firebasedatabase.app/";
         FirebaseDatabase database = FirebaseDatabase.getInstance(URL);
         DatabaseReference myRef = database.getReference("Articles");
 
@@ -49,6 +51,7 @@ public class ArticleData {
                     Article article = dataSnap.getValue(Article.class);
                     data.add(article);
                 }
+                articleList = new ArticleList(data);
                 displayData();
             }
 
@@ -59,7 +62,7 @@ public class ArticleData {
         });
     }
     public static void displayData() {
-        ArticleAdapter adapter = new ArticleAdapter(data, context);
+        ArticleAdapter adapter = new ArticleAdapter(articleList.getArticles(), context);
         gridView.setAdapter(adapter);
     }
 }
