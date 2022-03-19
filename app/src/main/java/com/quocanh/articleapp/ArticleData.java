@@ -22,7 +22,7 @@ public class ArticleData {
     private static GridView gridView;
 
     public static ArticleList articleList;
-    public static ArrayList<Article> data;
+    private static ArrayList<Article> data;
 
     public ArticleData(Context context, GridView gridView) {
         ArticleData.context = context;
@@ -36,7 +36,6 @@ public class ArticleData {
                 return articleList.getArticles().get(i);
             }
         }
-        articleList.getArticles().clear();
         return null;
     }
 
